@@ -5,8 +5,8 @@ const ReactDOM = require('react-dom');
 
 const ReactJSDOM = {
 	version: ReactDOM.version,
-	render: component => {
-		const window = new Window();
+	render: (component, window) => {
+		window = window || new Window();
 		const document = window.document;
 
 		const origGlobals = {
@@ -17,6 +17,9 @@ const ReactJSDOM = {
 		global.document = document;
 
 		const container = document.createElement('div');
+		container.id = 'root';
+		document.body.appendChild(container);
+
 		ReactDOM.render(component, container);
 
 		Object.keys(origGlobals).forEach(prop => {
