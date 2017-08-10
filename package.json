@@ -28,7 +28,7 @@
   "homepage": "https://github.com/lukechilds/react-jsdom",
   "dependencies": {},
   "devDependencies": {
-    "ava": "^0.20.0",
+    "ava": "^0.21.0",
     "coveralls": "^2.13.1",
     "eslint-config-xo-lukechilds": "^1.0.0",
     "nyc": "^11.0.3",
