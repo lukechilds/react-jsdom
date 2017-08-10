@@ -27,8 +27,10 @@
   },
   "homepage": "https://github.com/lukechilds/react-jsdom",
   "dependencies": {
-    "react-dom": "^15.6.1",
     "window": "^4.1.1"
+  },
+  "peerDependencies": {
+    "react-dom": "^15.6.1"
   },
   "devDependencies": {
     "ava": "^0.20.0",
