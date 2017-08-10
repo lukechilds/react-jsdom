@@ -1,5 +1,7 @@
 # react-jsdom
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/lukechilds/react-jsdom.svg)](https://greenkeeper.io/)
+
 > Render actual DOM nodes in Node.js
 
 [![Build Status](https://travis-ci.org/lukechilds/react-jsdom.svg?branch=master)](https://travis-ci.org/lukechilds/react-jsdom)
