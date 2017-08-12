@@ -18,7 +18,7 @@ npm install --save-dev react-jsdom
 
 ```js
 const React = require('react');
-const ReactJSDOM = require('this');
+const ReactJSDOM = require('react-jsdom');
 
 class Hi extends React.Component {
   render() {
