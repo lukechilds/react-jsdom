@@ -1,7 +1,7 @@
 {
   "name": "react-jsdom",
   "version": "2.0.3",
-  "description": "Render actual DOM nodes in Node.js",
+  "description": "Render React components to actual DOM nodes in Node.js",
   "main": "src/index.js",
   "scripts": {
     "test": "xo && nyc ava",
