@@ -1,7 +1,7 @@
 import test from 'ava';
 import Window from 'window';
 import React from 'react';
-import ReactJSDOM from 'this';
+import ReactJSDOM from '../src';
 
 test('ReactJSDOM is a object', t => {
 	t.is(typeof ReactJSDOM, 'object');
@@ -25,7 +25,7 @@ test('ReactJSDOM renders a React Component', t => {
 	t.is(elem.textContent, 'hi');
 });
 
-test('ReactJSDOM allows window instance to be passed in', t => {
+test('ReactJSDOM allows window instance to be passed in', async t => {
 	const window = new Window();
 	const elem = ReactJSDOM.render(
 		React.createElement('div', {}, 'hi'),
@@ -34,4 +34,38 @@ test('ReactJSDOM allows window instance to be passed in', t => {
 	t.is(elem, window.document.getElementById('root').children[0]);
 	t.is(elem.nodeName, 'DIV');
 	t.is(elem.textContent, 'hi');
+});
+
+test('Works with asynchronous components', async t => {
+	const originalDocument = global.document;
+	const { done, render } = ReactJSDOM.async;
+
+	class Test extends React.Component {
+		constructor(props) {
+			super(props);
+			this.state = {
+				children: 'test'
+			};
+		}
+		componentDidMount() {
+			setTimeout(() => {
+				this.setState({
+					children: 'updated'
+				});
+			}, 500);
+		}
+		componentDidUpdate() {
+			t.is(this.state.children, 'updated');
+			done();
+		}
+		render() {
+			return React.createElement('div', {}, this.state.children);
+		}
+	}
+
+	const { element, restore } = await render(React.createElement(Test));
+
+	t.is(element.nodeName, 'DIV');
+	restore();
+	t.is(global.document, originalDocument);
 });
