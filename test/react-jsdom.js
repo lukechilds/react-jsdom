@@ -15,6 +15,12 @@ class TestComponent extends React.Component {
 			this.props.componentWillMount();
 		}
 	}
+
+	componentDidMount() {
+		if (typeof this.props.componentDidMount === 'function') {
+			this.props.componentDidMount();
+		}
+	}
 }
 
 test('ReactJSDOM is a object', t => {
@@ -45,4 +51,8 @@ test('ReactJSDOM allows window instance to be passed in', t => {
 
 test('componentWillMount fires', t => {
 	ReactJSDOM.render(<TestComponent componentWillMount={() => t.pass()}/>);
+});
+
+test('componentDidMount fires', t => {
+	ReactJSDOM.render(<TestComponent componentDidMount={() => t.pass()}/>);
 });
