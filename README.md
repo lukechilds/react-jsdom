@@ -12,6 +12,36 @@
 npm install --save-dev react-jsdom
 ```
 
+## Usage
+
+```js
+const React = require('react');
+const ReactJSDOM = require('this');
+
+class TestComponent extends React.Component {
+  render() {
+    return (
+      <div>
+        <span>hi</span>
+        <span>mum</span>
+      </div>
+    );
+  }
+
+  componentDidMount() {
+    console.log('I mounted!');
+  }
+}
+
+const elem = ReactJSDOM.render(<TestComponent />);
+// I mounted!
+
+elem.nodeName;
+// 'DIV');
+elem.querySelector('span:last-child').textContent
+// 'mum'
+```
+
 ## License
 
 MIT © Luke Childs
