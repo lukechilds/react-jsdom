@@ -20,12 +20,12 @@ npm install --save-dev react-jsdom
 const React = require('react');
 const ReactJSDOM = require('this');
 
-class TestComponent extends React.Component {
+class Hi extends React.Component {
   render() {
     return (
       <div>
         <span>hi</span>
-        <span>mum</span>
+        <span>{this.props.person}</span>
       </div>
     );
   }
@@ -35,13 +35,18 @@ class TestComponent extends React.Component {
   }
 }
 
-const elem = ReactJSDOM.render(<TestComponent />);
+const elem = ReactJSDOM.render(<Hi person="mum"/>);
 // I mounted!
 
 elem.nodeName;
 // 'DIV');
-elem.querySelector('span:last-child').textContent
+elem.querySelector('span:last-child').textContent;
 // 'mum'
+elem.outerHTML;
+// <div>
+//   <span>hi</span>
+//   <span>mum</span>
+// </div>
 ```
 
 ## License
