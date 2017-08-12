@@ -36,8 +36,10 @@ class Hi extends React.Component {
 }
 
 const elem = ReactJSDOM.render(<Hi person="mum"/>);
-// I mounted!
+// console: 'I mounted!'
 
+elem.constructor.name
+// 'HTMLDivElement'
 elem.nodeName;
 // 'DIV');
 elem.querySelector('span:last-child').textContent;
