@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/lukechilds/react-jsdom",
   "dependencies": {
-    "react-dom": "^15.6.1",
+    "react-dom": "15.x",
     "window": "^4.1.1"
   },
   "devDependencies": {
