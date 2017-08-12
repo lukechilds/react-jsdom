@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types, react/jsx-no-bind */
+
 import test from 'ava';
 import Window from 'window';
 import React from 'react';
@@ -6,6 +8,12 @@ import ReactJSDOM from 'this';
 class TestComponent extends React.Component {
 	render() {
 		return <div>hi</div>;
+	}
+
+	componentWillMount() {
+		if (typeof this.props.componentWillMount === 'function') {
+			this.props.componentWillMount();
+		}
 	}
 }
 
@@ -33,4 +41,8 @@ test('ReactJSDOM allows window instance to be passed in', t => {
 	t.is(elem, window.document.getElementById('root').children[0]);
 	t.is(elem.nodeName, 'DIV');
 	t.is(elem.textContent, 'hi');
+});
+
+test('componentWillMount fires', t => {
+	ReactJSDOM.render(<TestComponent componentWillMount={() => t.pass()}/>);
 });
