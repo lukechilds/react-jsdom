@@ -26,7 +26,7 @@ const ReactJSDOM = {
 			global[prop] = origGlobals[prop];
 		});
 
-		return container.children.length > 1 ? container.children : container.children[0];
+		return container.children[0];
 	}
 
 };
