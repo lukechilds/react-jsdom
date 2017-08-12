@@ -6,6 +6,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/lukechilds/react-jsdom/badge.svg?branch=master)](https://coveralls.io/github/lukechilds/react-jsdom?branch=master)
 [![npm](https://img.shields.io/npm/v/react-jsdom.svg)](https://www.npmjs.com/package/react-jsdom)
 
+Makes testing simple React components super easy with any Node.js test framework.
+
 ## Install
 
 ```
