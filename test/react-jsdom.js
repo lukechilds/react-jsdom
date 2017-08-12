@@ -10,27 +10,20 @@ test('ReactJSDOM is a object', t => {
 test('ReactJSDOM cleans up globals', t => {
 	global.window = 'foo';
 	global.document = 'bar';
-	ReactJSDOM.render(
-		React.createElement('div', {}, 'hi')
-	);
+	ReactJSDOM.render(<div>hi</div>);
 	t.is(global.window, 'foo');
 	t.is(global.document, 'bar');
 });
 
 test('ReactJSDOM renders a React Component', t => {
-	const elem = ReactJSDOM.render(
-		React.createElement('div', {}, 'hi')
-	);
+	const elem = ReactJSDOM.render(<div>hi</div>);
 	t.is(elem.nodeName, 'DIV');
 	t.is(elem.textContent, 'hi');
 });
 
 test('ReactJSDOM allows window instance to be passed in', t => {
 	const window = new Window();
-	const elem = ReactJSDOM.render(
-		React.createElement('div', {}, 'hi'),
-		window
-	);
+	const elem = ReactJSDOM.render(<div>hi</div>, window);
 	t.is(elem, window.document.getElementById('root').children[0]);
 	t.is(elem.nodeName, 'DIV');
 	t.is(elem.textContent, 'hi');

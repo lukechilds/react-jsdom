@@ -8,7 +8,18 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "xo": {
-    "extends": "xo-lukechilds"
+    "extends": [
+      "xo-lukechilds",
+      "xo-react"
+    ]
+  },
+  "ava": {
+    "babel": {
+      "presets": [
+        "@ava/stage-4",
+        "react"
+      ]
+    }
   },
   "repository": {
     "type": "git",
@@ -34,8 +45,11 @@
   },
   "devDependencies": {
     "ava": "^0.20.0",
+    "babel-preset-react": "^6.24.1",
     "coveralls": "^2.13.1",
     "eslint-config-xo-lukechilds": "^1.0.0",
+    "eslint-config-xo-react": "^0.13.0",
+    "eslint-plugin-react": "^7.2.0",
     "nyc": "^11.0.3",
     "react": "^15.6.1",
     "this": "^1.0.2",
