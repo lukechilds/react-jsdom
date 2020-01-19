@@ -26,7 +26,7 @@ const ReactJSDOM = {
 			global[prop] = origGlobals[prop];
 		});
 
-		return container.children[0];
+		return container.childNodes[0];
 	}
 
 };
