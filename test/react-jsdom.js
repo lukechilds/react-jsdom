@@ -30,13 +30,13 @@ test('ReactJSDOM cleans up globals', t => {
 });
 
 test('ReactJSDOM renders a React Component', t => {
-	const elem = ReactJSDOM.render(<TestComponent/>);
+	const [elem] = ReactJSDOM.render(<TestComponent/>);
 	t.is(elem.nodeName, 'DIV');
 	t.is(elem.textContent, 'hi');
 });
 
 test('ReactJSDOM renders a React Fragment', t => {
-	const elem = ReactJSDOM.render((
+	const [elem] = ReactJSDOM.render((
 		<React.Fragment><TestComponent/></React.Fragment>
 	));
 	t.is(elem.nodeName, 'DIV');
@@ -44,20 +44,20 @@ test('ReactJSDOM renders a React Fragment', t => {
 });
 
 test('ReactJSDOM renders a Text String', t => {
-	const elem = ReactJSDOM.render('Hello world');
+	const [elem] = ReactJSDOM.render('Hello world');
 	t.is(elem.nodeName, '#text');
 	t.is(elem.textContent, 'Hello world');
 });
 
 test('ReactJSDOM renders a Fragment wrapping a text string', t => {
-	const elem = ReactJSDOM.render(<React.Fragment>Hello world</React.Fragment>);
+	const [elem] = ReactJSDOM.render(<React.Fragment>Hello world</React.Fragment>);
 	t.is(elem.nodeName, '#text');
 	t.is(elem.textContent, 'Hello world');
 });
 
 test('ReactJSDOM allows window instance to be passed in', t => {
 	const window = new Window();
-	const elem = ReactJSDOM.render(<TestComponent/>, window);
+	const [elem] = ReactJSDOM.render(<TestComponent/>, window);
 	t.is(elem, window.document.getElementById('root').children[0]);
 	t.is(elem.nodeName, 'DIV');
 	t.is(elem.textContent, 'hi');

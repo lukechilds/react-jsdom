@@ -20,31 +20,26 @@ npm install --save-dev react-jsdom
 const React = require('react');
 const ReactJSDOM = require('react-jsdom');
 
-class Hi extends React.Component {
-  render() {
-    return (
-      <div>
-        <span>hi</span>
-        <span>{this.props.person}</span>
-      </div>
-    );
-  }
+const Hi = function ({ person }) {
+  console.log('Hello there');
+  return (
+    <div>
+      <span>hi</span>
+      <span>{person}</span>
+    </div>
+  );
+};
 
-  componentDidMount() {
-    console.log('I mounted!');
-  }
-}
+const elems = ReactJSDOM.render(<Hi person="mum"/>);
+// console: 'Hello there'
 
-const elem = ReactJSDOM.render(<Hi person="mum"/>);
-// console: 'I mounted!'
-
-elem.constructor.name
+elems[0].constructor.name
 // 'HTMLDivElement'
-elem.nodeName;
+elems[0].nodeName;
 // 'DIV');
-elem.querySelector('span:last-child').textContent;
+elems[0].querySelector('span:last-child').textContent;
 // 'mum'
-elem.outerHTML;
+elems[0].outerHTML;
 // <div>
 //   <span>hi</span>
 //   <span>mum</span>
