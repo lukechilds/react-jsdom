@@ -43,6 +43,16 @@ test('ReactJSDOM renders a React Fragment', t => {
 	t.is(elem.textContent, 'hi');
 });
 
+test('ReactJSDOM renders two siblings', t => {
+	const [elem1, elem2] = ReactJSDOM.render((
+		<React.Fragment><TestComponent/><TestComponent/></React.Fragment>
+	));
+	t.is(elem1.nodeName, 'DIV');
+	t.is(elem1.textContent, 'hi');
+	t.is(elem2.nodeName, 'DIV');
+	t.is(elem2.textContent, 'hi');
+});
+
 test('ReactJSDOM renders a Text String', t => {
 	const [elem] = ReactJSDOM.render('Hello world');
 	t.is(elem.nodeName, '#text');
